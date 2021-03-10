@@ -8,15 +8,15 @@ app.set("view engine", "ejs");
 
 app.locals.pretty = true;
 
-app.get("/pubit", (req, res) => {
-  res.render("pages/oikeapubit.ejs");
+app.get("/", (req, res) => {
+  res.render("pages/index");
 });
 
 app.get("/cities", (req, res) => {
-  res.render("pages/towns.ejs");
+  res.render("pages/towns");
 });
 app.get("/upcoming", (req, res) => {
-  res.render("pages/coming.ejs");
+  res.render("pages/coming");
 });
 app.listen(PORT, () => {
   console.log("Kuunnellaan porttia 5000");
