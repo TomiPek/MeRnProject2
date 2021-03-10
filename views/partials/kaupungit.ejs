@@ -1,0 +1,73 @@
+<style>
+    body {
+
+        align-items: center;
+        background-image: url("images/city1.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    table,
+    th,
+    td {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        padding: 8px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: left;
+        color: white;
+        background-image: url("images/stars.jpg");
+
+    }
+
+    #otsikko {
+        color: white;
+    }
+</style>
+<div id="otsikko" class="container text-center">
+    <h4>Filter breweries by city name. </h4>
+    <input id="haku"></input><button id="search" onclick="data()">Search</button>
+    <div id="country"></div>
+    <br>
+</div>
+
+<script>
+    function data() {
+
+        var kaupunki = $("#haku").val(); // muuttujan nimeäminen search fieldin valueta varten
+
+        var summary = "https://api.openbrewerydb.org/breweries?by_city=" + kaupunki;
+        $.get(summary, function (data) {  //  Ajax haku 
+
+            var taulukko = "<table>";
+            // Taululle otsikot
+            taulukko += "<tr><td><h5>Name</h5></td><td><h5>Type</h5></td><td><h5>Osoite</h5></td>";
+
+            for (var i = 0; i < data.length; i++) {
+
+                // taulukon rivien lisäys
+                taulukko += "<tr>";
+                taulukko += "<td>" + data[i].name + "</td>";
+                taulukko += "<td>" + data[i].brewery_type + "</td>";
+
+                taulukko += "<td>" + data[i].street + "</td>";
+
+                taulukko += "</tr>";
+
+            }
+            $("#xy").html(taulukko);
+
+        }
+        );
+    }
+</script>
+
+<body onload="data()">
+
+    <div id="xy"></div>
+
+
+</body>

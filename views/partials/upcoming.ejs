@@ -1,0 +1,50 @@
+<style>
+    body {
+        align-items: center;
+        background-image: url("images/rakenteilla.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    table,
+    th,
+    td {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        border: 1px solid #ddd;
+        padding: 8px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        text-align: left;
+        background-color: #525a70;
+        color: white;
+    }
+</style>
+<div id="otsikko" class="container text-center">
+    <h2><Strong>Upcoming Breweries</Strong></h2>
+</div>
+
+<script>
+    function data() {
+        // osoite josta tietoa haetaan
+        var summary = "https://api.openbrewerydb.org/breweries?by_type=planning";
+        $.get(summary, function (data) {
+            var taulukko = "<table>";
+            taulukko += "<tr><td><h5>Name</h5></td><td><h5>Homepage</h5></td>";
+            for (var i = 0; i < data.length; i++) {
+                taulukko += "<tr>";
+                taulukko += "<td>" + data[i].name + "</td>";
+                // Linkki websiten osoitetta varten
+                taulukko += "<td><a href=" + data[i].website_url + ">Link</a></td>"
+                taulukko += "</tr>";
+            }
+            $("#xy").html(taulukko);
+        }
+        );
+    }
+</script>
+
+<body onload="data()">
+    <div id="xy"></div>
+</body>
