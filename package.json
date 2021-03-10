@@ -9,7 +9,8 @@
   "author": "Tomi pekurinen",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.17.1",
     "request": "^2.88.2",
-    "reqyest": "0.0.1-security"
+    "ejs": "3.1.6"
   }
 }
