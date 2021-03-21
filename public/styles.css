@@ -1,0 +1,69 @@
+body {
+  padding-top: 30px;
+  align-items: center;
+  background-color: rgb(36, 43, 43);
+}
+
+table,
+th,
+td {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+  background-color: #1c5037;
+  color: white;
+}
+
+#mySelect {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #091409;
+  color: white;
+  height: auto;
+  padding: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#otsikko {
+  color: rgba(219, 223, 235, 0.89);
+}
+
+#selite {
+  color: rgba(219, 223, 235, 0.89);
+}
+
+#navi {
+  background-color: #1c5037;
+}
+
+#tiedot {
+  align-items: center;
+  color: rgba(219, 223, 235, 0.89);
+}
+
+#oma {
+  text-align: center;
+  color: rgba(240, 248, 255, 0.911);
+}
+
+#tervetuloa {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgba(240, 248, 255, 0.911);
+}
+#testiotsikko {
+  color: rgb(97, 22, 22);
+}
+
+#haku {
+  color: #0f2794;
+}
+
+#search {
+  color: #0f2794;
+}

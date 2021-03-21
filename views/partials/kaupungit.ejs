@@ -1,73 +1,35 @@
-<style>
-    body {
-
-        align-items: center;
-        background-image: url("images/city1.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
-
-    table,
-    th,
-    td {
-        font-family: Arial, Helvetica, sans-serif;
-        border-collapse: collapse;
-        width: 100%;
-        border: 1px solid #ddd;
-        padding: 8px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        text-align: left;
-        color: white;
-        background-image: url("images/stars.jpg");
-
-    }
-
-    #otsikko {
-        color: white;
-    }
-</style>
 <div id="otsikko" class="container text-center">
-    <h4>Filter breweries by city name. </h4>
+    <h4 id="selite"><strong>Search breweries by city name.</strong> </h4>
+    <p>(City has to be located in united states)</p>
     <input id="haku"></input><button id="search" onclick="data()">Search</button>
     <div id="country"></div>
     <br>
 </div>
-
+<div id="xy"></div>
 <script>
     function data() {
 
         var kaupunki = $("#haku").val(); // muuttujan nimeäminen search fieldin valueta varten
 
-        var summary = "https://api.openbrewerydb.org/breweries?by_city=" + kaupunki;
+        var summary = "https://api.openbrewerydb.org/breweries?by_city=" + kaupunki; // Lisätään hakuun haluttu kaupunki
         $.get(summary, function (data) {  //  Ajax haku 
 
             var taulukko = "<table>";
             // Taululle otsikot
-            taulukko += "<tr><td><h5>Name</h5></td><td><h5>Type</h5></td><td><h5>Osoite</h5></td>";
+            taulukko += "<tr><td><h3><Strong>Name</Strong></h3></td><td><h3><Strong>Type</Strong></h3></td><td><h3><Strong>Address</Strong></h3></td>";
 
             for (var i = 0; i < data.length; i++) {
 
                 // taulukon rivien lisäys
                 taulukko += "<tr>";
-                taulukko += "<td>" + data[i].name + "</td>";
-                taulukko += "<td>" + data[i].brewery_type + "</td>";
+                taulukko += "<td>" + data[i].name + "</td>"; // Breweryn nimen poiminta
+                taulukko += "<td>" + data[i].brewery_type + "</td>"; // Breweryn tyypin poiminta
 
-                taulukko += "<td>" + data[i].street + "</td>";
+                taulukko += "<td>" + data[i].street + "</td>"; // Breweryn osoitteen poiminta
 
                 taulukko += "</tr>";
-
             }
-            $("#xy").html(taulukko);
-
-        }
-        );
+            $("#xy").html(taulukko); // Sijainti johon taulukko tuodaan
+        });
     }
 </script>
-
-<body onload="data()">
-
-    <div id="xy"></div>
-
-
-</body>
